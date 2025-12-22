@@ -5,6 +5,7 @@ import com.example.demoopenai.dto.ChatRequest;
 import com.example.demoopenai.dto.ExpenseInfo;
 import com.example.demoopenai.dto.FilmInfo;
 import com.example.demoopenai.service.ChatService;
+import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +23,7 @@ public class ChatController {
     }
 
     @PostMapping("/chat-message")
-    public ExpenseInfo sendMessage(@RequestBody ChatRequest chatRequest) {
+    public String sendMessage(@RequestBody ChatRequest chatRequest) {
         return chatService.generate(chatRequest);
     }
 
